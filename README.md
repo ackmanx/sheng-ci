@@ -1,5 +1,10 @@
 # How to deploy
 
+1. Do whatever I want and commit it in `master`
+1. When ready to deploy, merge `master` into `netlify`
+1. Push to `origin`
+1. Netlify will auto-detect the push and deploy
+
 ## Netlify
 
 https://sheng-ci.netlify.com/
