@@ -1,0 +1,15 @@
+{
+    "short_name": "Sheng1 Ci2",
+    "name": "Sheng1 Ci1",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "theme_color": "#2196F4",
+    "background_color": "#ffffff"
+}
