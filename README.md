@@ -4,7 +4,7 @@
 
 https://sheng-ci.netlify.com/
 
-To set up, I created a free account and connected Netlify to my BitBucket repository. They added a git hook to it and auto-deploy when I push to `origin/master`.
+To set up, I created a free account and connected Netlify to my BitBucket repository. They added a git hook to it and auto-deploy when I push to `origin/netlify`.
 
 On push, Netlify runs my user-defined npm script (set via their control panel UI on the website) `netlify-build`. They will then host whatever is found in the `build` directory (also user-defined on their UI).
 
