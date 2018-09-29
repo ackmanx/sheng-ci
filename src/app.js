@@ -1,7 +1,7 @@
 import React from 'react'
 import './app.css'
 
-const webtaskAPI = 'https://wt-b799f0ade639c484ac317ecb184a02ad-0.sandbox.auth0-extend.com/sheng-ci'
+const webtaskAPI = 'https://wt-b799f0ade639c484ac317ecb184a02ad-0.sandbox.auth0-extend.com/sheng-ci-entry'
 
 export default class App extends React.Component {
     constructor() {
