@@ -1,5 +1,6 @@
 import React from 'react'
 import './sidebar.css'
+import {uuidv4} from "./dumping-grounds";
 
 export default class Sidebar extends React.Component {
     render() {
@@ -7,9 +8,10 @@ export default class Sidebar extends React.Component {
             <div className='sidebar'>
                 <div className='add-category'>+ New Category</div>
                 <ul>
-                    <li>Names and Places</li>
-                    <li>Grammar</li>
-                    <li>The Rest</li>
+                    {Object.keys(this.props.categories).map(categoryId => {
+                        const category = this.props.categories[categoryId]
+                        return <li key={uuidv4()}>{category.name}</li>
+                    })}
                 </ul>
             </div>
         )
