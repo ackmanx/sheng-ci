@@ -1,12 +1,8 @@
 /**
- * This file needs to be copy and pasted into webtask.io/make UI
- * Or, I could download their CLI like a smart person and use that
+ * This file is hosted on Webtask
+ * To update, run npm script webtask-update
  *
  * https://wt-b799f0ade639c484ac317ecb184a02ad-0.sandbox.auth0-extend.com/sheng-ci-entry
- *
- * @param context WebtaskContext
- * @param req Express Request
- * @param res Express Response
  */
 const express = require('express')
 const Webtask = require('webtask-tools')
@@ -29,16 +25,14 @@ app.get('/', function (req, res) {
             body = data
         }
 
-        res.writeHead(200, {'Content-Type': 'application/json'})
-        res.end(JSON.stringify(body))
-        // res.sendStatus(200)
+        res.json(body)
     })
 })
 
 app.post('/', function (req, res) {
     req.webtaskContext.storage.get(function (error, data = {}) {
         if (error) {
-            return res.end(JSON.stringify({error: 'Error getting from storage before saving', message: error}))
+            return res.json({error: 'Error getting from storage before saving', message: error})
         }
 
         if (req.query.id) {
@@ -52,10 +46,10 @@ app.post('/', function (req, res) {
 
         req.webtaskContext.storage.set(data, function (error) {
             if (error) {
-                return res.end(JSON.stringify({error: 'Error saving to storage', message: error}))
+                return res.json({error: 'Error saving to storage', message: error})
             }
 
-            res.end(JSON.stringify({message: 'Saved!', saved: data}))
+            res.json({message: 'Saved!', saved: data})
         })
     })
 })
