@@ -3,31 +3,3 @@
 .app {
     display: flex;
 }
-
-.sidebar {
-    min-width: 250px;
-    height: 100vh;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-}
-
-.add-category {
-    background-color: #2196F4;
-    margin-bottom: 15px;
-    padding: 15px;
-}
-
-.sidebar li {
-    background-color: #2196F4;
-    margin-bottom: 15px;
-    padding: 15px;
-}
-
-.entry {
-    display: inline-block;
-    border: 2px solid #2196F4;
-    margin: 20px;
-    padding: 15px;
-    font-size: 20px;
-}

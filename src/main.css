@@ -1,0 +1,9 @@
+/* ganjing blue #2196F4 */
+
+.entry {
+    display: inline-block;
+    border: 2px solid #2196F4;
+    margin: 20px;
+    padding: 15px;
+    font-size: 20px;
+}
