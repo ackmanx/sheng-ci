@@ -27,13 +27,11 @@ app.post('/', function (req, res) {
             return res.json({message: 'Error getting from storage before saving', error})
         }
 
-        if (req.query.id) {
-            entries[req.query.id] = {
-                category: req.query.category,
-                hanzi: decodeURI(req.query.hanzi),
-                pinyin: req.query.pinyin,
-                english: req.query.english,
-            }
+        entries[req.body.id] = {
+            category: req.body.category,
+            hanzi: req.body.hanzi,
+            pinyin: req.body.pinyin,
+            english: req.body.english,
         }
 
         req.webtaskContext.storage.set(entries, function (error) {
@@ -41,7 +39,7 @@ app.post('/', function (req, res) {
                 return res.json({message: 'Error saving to storage', error})
             }
 
-            res.json({message: 'Saved!', saved: entries})
+            res.json({message: 'Saved!', saved: entries[req.body.id]})
         })
     })
 })
