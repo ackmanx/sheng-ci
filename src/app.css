@@ -5,7 +5,7 @@
 }
 
 .sidebar {
-    width: 250px;
+    min-width: 250px;
     height: 100vh;
     font-size: 20px;
     color: white;
@@ -22,4 +22,12 @@
     background-color: lightsteelblue;
     margin-bottom: 15px;
     padding: 15px;
+}
+
+.entry {
+    display: inline-block;
+    background-color: blanchedalmond;
+    margin: 20px;
+    padding: 15px;
+    font-size: 20px;
 }
