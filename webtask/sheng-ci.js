@@ -2,7 +2,9 @@
  * This file needs to be copy and pasted into webtask.io/make UI
  * Or, I could download their CLI like a smart person and use that
  *
- * @param context {WebtaskContext}
+ * @param context WebtaskContext
+ * @param req Express Request
+ * @param res Express Response
  */
 module.exports = function (context, req, res) {
     res.writeHead(200, {'Content-Type': 'application/json'})
