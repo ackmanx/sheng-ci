@@ -8,40 +8,35 @@
  * @param req Express Request
  * @param res Express Response
  */
-module.exports = function (context, req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'})
+const express = require('express')
+const Webtask = require('webtask-tools')
+const bodyParser = require('body-parser')
+const app = express()
 
-    switch (req.method) {
-        case 'GET':
-            get(context, res)
-            break;
+app.use(bodyParser.json())
 
-        case 'POST':
-            post(context, req, res)
-            break;
-    }
-}
-
-function get(context, res) {
-    context.storage.get(function (error, data = {}) {
+app.get('/', function (req, res) {
+    req.webtaskContext.storage.get(function (error, data = {}) {
         let body
 
         if (error) {
             body = {
                 error,
-                message:  'Error getting from storage'
+                message: 'Error getting from storage'
             }
         }
         else {
             body = data
         }
 
+        res.writeHead(200, {'Content-Type': 'application/json'})
         res.end(JSON.stringify(body))
+        // res.sendStatus(200)
     })
-}
+})
 
-function post(context, req, res) {
-    context.storage.get(function (error, data = {}) {
+app.post('/', function (req, res) {
+    req.webtaskContext.storage.get(function (error, data = {}) {
         if (error) {
             return res.end(JSON.stringify({error: 'Error getting from storage before saving', message: error}))
         }
@@ -55,7 +50,7 @@ function post(context, req, res) {
             }
         }
 
-        context.storage.set(data, function (error) {
+        req.webtaskContext.storage.set(data, function (error) {
             if (error) {
                 return res.end(JSON.stringify({error: 'Error saving to storage', message: error}))
             }
@@ -63,4 +58,6 @@ function post(context, req, res) {
             res.end(JSON.stringify({message: 'Saved!', saved: data}))
         })
     })
-}
+})
+
+module.exports = Webtask.fromExpress(app)
