@@ -13,20 +13,20 @@
 }
 
 .add-category {
-    background-color: lightsteelblue;
+    background-color: #2196F4;
     margin-bottom: 15px;
     padding: 15px;
 }
 
 .sidebar li {
-    background-color: lightsteelblue;
+    background-color: #2196F4;
     margin-bottom: 15px;
     padding: 15px;
 }
 
 .entry {
     display: inline-block;
-    background-color: blanchedalmond;
+    border: 2px solid #2196F4;
     margin: 20px;
     padding: 15px;
     font-size: 20px;
