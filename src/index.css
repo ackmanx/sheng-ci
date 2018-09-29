@@ -4,3 +4,12 @@ body {
     background-color: white;
     font: 14px 'Open Sans', sans-serif;
 }
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
