@@ -1,5 +1,5 @@
 import React from 'react'
-import './main.css'
+import './entries.css'
 
 export default class Entries extends React.Component {
     render() {
