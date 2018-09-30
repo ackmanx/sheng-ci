@@ -11,6 +11,7 @@
         "node": "8.12.0"
     },
     "devDependencies": {
+        "redux-devtools-extension": "2.13.5",
         "wt-cli": "11.0.0"
     },
     "dependencies": {
@@ -30,6 +31,7 @@
         "react-redux": "provides ability to use redux with react",
         "redux": "state management library",
         "redux-thunk": "provides ability to pass functions to redux for asynchronous uses",
+        "redux-devtools-extension": "using this removes the need for custom code looking for devtools extension in the app",
         "----backend-dependencies---": "",
         "serve": "static server being i'm not using a standard node server",
         "wt-cli": "webtask.io cli for managing webtask endpoints"

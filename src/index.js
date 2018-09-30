@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import App from './components/app'
 import './index.css'
 import {Provider} from 'react-redux'
-import {applyMiddleware, compose, createStore} from 'redux'
+import {applyMiddleware, createStore} from 'redux'
+import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import combinedReducers from './reducers'
 
@@ -16,12 +17,8 @@ const initialState = {
 const store = createStore(
     combinedReducers,
     initialState,
-    //Because middleware and devtools are both enhancers, we combine them into a single argument using redux's compose (like we do with combinedReducers)
-    compose(
+    composeWithDevTools(
         applyMiddleware(thunk),
-        //Putting this here enables redux devtools extension to work, as per their docs
-        //Being this is an Electron app, you also need to install redux dev tools via the code (see node/entry.js)
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 )
 
