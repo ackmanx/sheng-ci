@@ -1,7 +1,7 @@
 import React from 'react'
 import './app.css'
 import Sidebar from "./sidebar";
-import Main from "./main";
+import Entries from "./entries";
 import {webtaskCategory} from "./dumping-grounds";
 
 export default class App extends React.Component {
@@ -19,7 +19,7 @@ export default class App extends React.Component {
         return (
             <div className='app'>
                 <Sidebar categories={this.state.categories}/>
-                <Main/>
+                <Entries/>
             </div>
         )
     }

@@ -21,6 +21,17 @@ app.get('/', function (req, res) {
     })
 })
 
+/*
+ * Contract:
+ * {
+ *   id: String
+ *   categoryId: String
+ *   hanzi: String
+ *   pinyin: String
+ *   english: String
+ * }
+ */
+//todo: update with new structure because entries are all in arrays with categoryId as key
 app.post('/', function (req, res) {
     req.webtaskContext.storage.get(function (error, entries = {}) {
         if (error) {
@@ -28,7 +39,7 @@ app.post('/', function (req, res) {
         }
 
         entries[req.body.id] = {
-            category: req.body.category,
+            categoryId: req.body.categoryId,
             hanzi: req.body.hanzi,
             pinyin: req.body.pinyin,
             english: req.body.english,

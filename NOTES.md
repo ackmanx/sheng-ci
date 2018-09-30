@@ -1,18 +1,3 @@
-fuckingGetIt() {
-    fetch(webtaskAPI)
-        .then(res => {
-            if (res.status !== 200) {
-                console.error('Uh oh. The webtask did not work!')
-                return
-            }
-
-            res.json().then(json => {
-                this.setState({vocab: json})
-            })
-        })
-        .catch(e => console.error(e))
-}
-
 fuckingSendIt() {
     const queryParams = `id=${new Date().getTime()}&hanzi=${encodeURI(this.state.hanzi)}&pinyin=${this.state.pinyin}&english=${this.state.english}`
 
@@ -21,5 +6,9 @@ fuckingSendIt() {
         .catch(err => console.error(err))
 }
 
-const webtaskAPI = 'https://wt-b799f0ade639c484ac317ecb184a02ad-0.sandbox.auth0-extend.com/sheng-ci-entry'
-const webtaskAPI = 'https://wt-b799f0ade639c484ac317ecb184a02ad-0.sandbox.auth0-extend.com/sheng-ci-category'
+
+<div className="entry">
+    <div>为什么你不爱我</div>
+    <div>wei4 shen2 me ni3 nu4 ai4 wo3</div>
+    <div>why don't you love me</div>
+</div>
