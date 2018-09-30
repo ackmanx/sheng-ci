@@ -15,17 +15,22 @@ export class Entries extends React.Component {
     }
 
     render() {
-        const {entries} = this.props
+        const {currentCategoryId, entries} = this.props
 
-        let allEntries = []
+        let entriesToShow = []
 
-        Object.keys(entries).forEach(categoryId => {
-            allEntries = allEntries.concat(entries[categoryId])
-        })
+        if (currentCategoryId === 'ALL') {
+            Object.keys(entries).forEach(categoryId => {
+                entriesToShow = entriesToShow.concat(entries[categoryId])
+            })
+        }
+        else {
+            entriesToShow = entries[currentCategoryId]
+        }
 
         return (
             <div className='entries-panel'>
-                {allEntries.map(entry =>
+                {entriesToShow.map(entry =>
                     <div key={uuidv4()} className="entry">
                         <div>{entry.hanzi}</div>
                         <div>{entry.pinyin}</div>
@@ -38,7 +43,8 @@ export class Entries extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    entries: state.entries
+    entries: state.entries,
+    currentCategoryId: state.app.currentCategoryId,
 })
 
 const mapDispatchToProps = dispatch => ({

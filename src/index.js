@@ -11,7 +11,9 @@ import categories from './reducers/categories'
 import entries from './reducers/entries'
 
 const initialState = {
-    app: {},
+    app: {
+        currentCategoryId: 'ALL',
+    },
     categories: {},
     entries: {},
 }
