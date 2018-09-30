@@ -1,31 +1,31 @@
 {
-  "name": "sheng1-ci2",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "start": "react-scripts start",
-    "webtask-update": "sh webtask/webtask-update.sh",
-    "netlify-build": "react-scripts build"
-  },
-  "engines": {
-    "node": "8.12.0"
-  },
-  "devDependencies": {
-    "wt-cli": "11.0.0"
-  },
-  "dependencies": {
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
-    "react-scripts": "1.1.4",
-    "serve": "9.4.2"
-  },
-  "comments": {
-    "----frontend-dependencies---": "",
-    "react": "frontend framework",
-    "react-dom": "used to attach react components to the dom",
-    "react-router-dom": "dom bindings for react-router",
-    "----backend-dependencies---": "",
-    "serve": "static server being i'm not using a standard node server",
-    "wt-cli": "webtask.io cli for managing webtask endpoints"
-  }
+    "name": "sheng1-ci2",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "webtask-update": "sh webtask/webtask-update.sh",
+        "netlify-build": "react-scripts build"
+    },
+    "engines": {
+        "node": "8.12.0"
+    },
+    "devDependencies": {
+        "wt-cli": "11.0.0"
+    },
+    "dependencies": {
+        "react": "15.6.1",
+        "react-dom": "15.6.1",
+        "react-scripts": "1.1.4",
+        "serve": "9.4.2"
+    },
+    "comments": {
+        "----frontend-dependencies---": "",
+        "react": "frontend framework",
+        "react-dom": "used to attach react components to the dom",
+        "react-router-dom": "dom bindings for react-router",
+        "----backend-dependencies---": "",
+        "serve": "static server being i'm not using a standard node server",
+        "wt-cli": "webtask.io cli for managing webtask endpoints"
+    }
 }
