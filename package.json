@@ -17,6 +17,9 @@
         "react": "15.6.1",
         "react-dom": "15.6.1",
         "react-scripts": "1.1.4",
+        "react-redux": "5.0.7",
+        "redux": "4.0.0",
+        "redux-thunk": "2.3.0",
         "serve": "9.4.2"
     },
     "comments": {
@@ -24,6 +27,9 @@
         "react": "frontend framework",
         "react-dom": "used to attach react components to the dom",
         "react-router-dom": "dom bindings for react-router",
+        "react-redux": "provides ability to use redux with react",
+        "redux": "state management library",
+        "redux-thunk": "provides ability to pass functions to redux for asynchronous uses",
         "----backend-dependencies---": "",
         "serve": "static server being i'm not using a standard node server",
         "wt-cli": "webtask.io cli for managing webtask endpoints"

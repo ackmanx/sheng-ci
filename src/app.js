@@ -1,8 +1,8 @@
 import React from 'react'
 import './app.css'
-import Sidebar from "./sidebar";
-import Entries from "./entries";
-import {webtaskCategory} from "./dumping-grounds";
+import ConnectedSidebar from './sidebar'
+import Entries from './entries'
+import {webtaskCategory} from './dumping-grounds'
 
 export default class App extends React.Component {
     state = {
@@ -18,7 +18,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div className='app'>
-                <Sidebar categories={this.state.categories}/>
+                <ConnectedSidebar categories={this.state.categories}/>
                 <Entries/>
             </div>
         )

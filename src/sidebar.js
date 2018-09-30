@@ -1,8 +1,9 @@
 import React from 'react'
 import './sidebar.css'
-import {uuidv4} from "./dumping-grounds";
+import {uuidv4} from './dumping-grounds'
+import {connect} from 'react-redux'
 
-export default class Sidebar extends React.Component {
+export class Sidebar extends React.Component {
     render() {
         return (
             <div className='sidebar'>
@@ -17,3 +18,11 @@ export default class Sidebar extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
