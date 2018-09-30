@@ -6,7 +6,7 @@ import getCategories from '../actions/get-categories'
 
 export class Sidebar extends React.Component {
     static defaultProps = {
-        categories: []
+        categories: {}
     }
 
     constructor(props) {

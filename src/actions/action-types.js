@@ -1,1 +1,2 @@
 export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const GET_ALL_ENTRIES = 'GET_ALL_ENTRIES'
