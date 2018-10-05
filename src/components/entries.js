@@ -3,6 +3,7 @@ import './entries.css'
 import connect from 'react-redux/es/connect/connect'
 import getAllEntries from '../actions/get-all-entries'
 import {uuidv4} from '../dumping-grounds'
+import ConnectedAddNewEntry from './add-new-entry'
 
 export class Entries extends React.Component {
     static defaultProps = {
@@ -30,11 +31,12 @@ export class Entries extends React.Component {
 
         return (
             <div className='entries-panel'>
+                <ConnectedAddNewEntry/>
                 {entriesToShow.map(entry =>
                     <div key={uuidv4()} className="entry">
                         <div>{entry.hanzi}</div>
                         <div>{entry.pinyin}</div>
-                        <div>{entry.english}</div>
+                        <div className='english'>{entry.english}</div>
                     </div>
                 )}
             </div>
