@@ -2,8 +2,15 @@ import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
 import submitNewEntry from '../actions/submit-new-entry'
+import {UPDATE_ADD_ENTRY} from '../actions/action-types'
 
 export class AddNewEntry extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.updateValue = this.updateValue.bind(this)
+    }
+
     render() {
         const {submitNewEntry} = this.props
 
@@ -12,7 +19,8 @@ export class AddNewEntry extends React.Component {
                 <div className='inputs'>
                     <div className='group'>
                         <label>Hanzi</label>
-                        <input/>
+                        <input onBlur={event => this.updateValue(event, 'hanzi')}
+                               onKeyPress={event => this.checkEnterAndSubmit(event, 'hanzi')}/>
                     </div>
                     <div className='group'>
                         <label>Pinyin</label>
@@ -29,12 +37,24 @@ export class AddNewEntry extends React.Component {
             </div>
         )
     }
+
+    updateValue(event, label) {
+        this.props.updateValue(label, event.target.value)
+    }
+
+    checkEnterAndSubmit(event, label) {
+        if (event.key === 'Enter') {
+            this.updateValue(event, label)
+            this.props.submitNewEntry()
+        }
+    }
 }
 
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
-    submitNewEntry: () => dispatch(submitNewEntry())
+    updateValue: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
+    submitNewEntry: () => dispatch(submitNewEntry()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)
