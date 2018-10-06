@@ -1,9 +1,9 @@
 import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
-import submitNewEntry from '../actions/submit-new-entry'
-import {UPDATE_ADD_ENTRY} from '../actions/action-types'
-import {uuidv4} from '../dumping-grounds'
+import submitNewEntry from '../../actions/submit-new-entry'
+import {UPDATE_ADD_ENTRY} from '../../actions/action-types'
+import {uuidv4} from '../../dumping-grounds'
 
 export class AddNewEntry extends React.Component {
 

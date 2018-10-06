@@ -1,7 +1,7 @@
 import React from 'react'
 import './app.css'
-import ConnectedSidebar from './sidebar'
-import ConnectedEntries from './entries'
+import ConnectedSidebar from '../sidebar/sidebar'
+import ConnectedEntries from '../entries/entries'
 
 export default class App extends React.Component {
     render() {

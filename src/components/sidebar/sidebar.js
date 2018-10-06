@@ -1,9 +1,9 @@
 import React from 'react'
 import './sidebar.css'
-import {uuidv4} from '../dumping-grounds'
+import {uuidv4} from '../../dumping-grounds'
 import {connect} from 'react-redux'
-import getCategories from '../actions/get-categories'
-import {SHOW_CATEGORY} from '../actions/action-types'
+import getCategories from '../../actions/get-categories'
+import {SHOW_CATEGORY} from '../../actions/action-types'
 
 export class Sidebar extends React.Component {
     static defaultProps = {

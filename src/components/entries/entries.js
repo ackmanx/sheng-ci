@@ -1,9 +1,9 @@
 import React from 'react'
 import './entries.css'
 import connect from 'react-redux/es/connect/connect'
-import getAllEntries from '../actions/get-all-entries'
-import {uuidv4} from '../dumping-grounds'
-import ConnectedAddNewEntry from './add-new-entry'
+import getAllEntries from '../../actions/get-all-entries'
+import {uuidv4} from '../../dumping-grounds'
+import ConnectedAddNewEntry from '../add-new-entry/add-new-entry'
 
 export class Entries extends React.Component {
     static defaultProps = {
