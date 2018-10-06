@@ -38,12 +38,14 @@ app.post('/', function (req, res) {
             return res.json({message: 'Error getting from storage before saving', error})
         }
 
-        entries[req.body.id] = {
+        //todo: when I do entry updates, I'll have to change this to search first
+        entries[req.body.categoryId].push({
+            id: uuidv4(),
             categoryId: req.body.categoryId,
             hanzi: req.body.hanzi,
             pinyin: req.body.pinyin,
             english: req.body.english,
-        }
+        })
 
         req.webtaskContext.storage.set(entries, function (error) {
             if (error) {
@@ -54,5 +56,12 @@ app.post('/', function (req, res) {
         })
     })
 })
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8)
+        return v.toString(16)
+    })
+}
 
 module.exports = Webtask.fromExpress(app)

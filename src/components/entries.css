@@ -1,3 +1,7 @@
+.entries-panel {
+    width: calc(100% - 250px);
+}
+
 .entry {
     display: inline-block;
     border: 2px solid #2196f4;

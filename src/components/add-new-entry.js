@@ -1,9 +1,12 @@
 import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
+import submitNewEntry from '../actions/submit-new-entry'
 
 export class AddNewEntry extends React.Component {
     render() {
+        const {submitNewEntry} = this.props
+
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
@@ -21,7 +24,7 @@ export class AddNewEntry extends React.Component {
                     </div>
                 </div>
                 <div className='submit'>
-                    <button>Add</button>
+                    <button onClick={submitNewEntry}>Add</button>
                 </div>
             </div>
         )
@@ -30,6 +33,8 @@ export class AddNewEntry extends React.Component {
 
 const mapStateToProps = state => ({})
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    submitNewEntry: () => dispatch(submitNewEntry())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)

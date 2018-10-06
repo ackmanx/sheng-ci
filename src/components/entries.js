@@ -31,7 +31,7 @@ export class Entries extends React.Component {
 
         return (
             <div className='entries-panel'>
-                <ConnectedAddNewEntry/>
+                {currentCategoryId !== 'ALL' && <ConnectedAddNewEntry/>}
                 {entriesToShow.map(entry =>
                     <div key={uuidv4()} className="entry">
                         <div>{entry.hanzi}</div>
