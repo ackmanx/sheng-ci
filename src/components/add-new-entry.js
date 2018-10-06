@@ -9,52 +9,51 @@ export class AddNewEntry extends React.Component {
     constructor(props) {
         super(props)
         this.updateValue = this.updateValue.bind(this)
+        this.checkEnterAndSubmit = this.checkEnterAndSubmit.bind(this)
     }
 
     render() {
-        const {submitNewEntry} = this.props
+        const {submitNewEntryAction} = this.props
 
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
-                    <div className='group'>
-                        <label>Hanzi</label>
-                        <input onBlur={event => this.updateValue(event, 'hanzi')}
-                               onKeyPress={event => this.checkEnterAndSubmit(event, 'hanzi')}/>
-                    </div>
-                    <div className='group'>
-                        <label>Pinyin</label>
-                        <input/>
-                    </div>
-                    <div className='group'>
-                        <label>English</label>
-                        <input/>
-                    </div>
+                    {['hanzi', 'pinyin', 'english'].map(label => <Group label={label}
+                                                                        updateValue={this.updateValue}
+                                                                        checkEnterAndSubmit={this.checkEnterAndSubmit}/>)}
                 </div>
                 <div className='submit'>
-                    <button onClick={submitNewEntry}>Add</button>
+                    <button onClick={submitNewEntryAction}>Add</button>
                 </div>
             </div>
         )
     }
 
     updateValue(event, label) {
-        this.props.updateValue(label, event.target.value)
+        this.props.updateValueAction(label, event.target.value)
     }
 
     checkEnterAndSubmit(event, label) {
         if (event.key === 'Enter') {
             this.updateValue(event, label)
-            this.props.submitNewEntry()
+            this.props.submitNewEntryAction()
         }
     }
 }
 
+const Group = props => (
+    <div className='group'>
+        <label>{props.label}</label>
+        <input onBlur={event => props.updateValue(event, props.label)}
+               onKeyPress={event => props.checkEnterAndSubmit(event, props.label)}/>
+    </div>
+)
+
 const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
-    updateValue: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
-    submitNewEntry: () => dispatch(submitNewEntry()),
+    updateValueAction: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
+    submitNewEntryAction: () => dispatch(submitNewEntry()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)
