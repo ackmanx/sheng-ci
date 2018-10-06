@@ -3,7 +3,7 @@ import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
 import submitNewEntry from '../../actions/submit-new-entry'
 import {UPDATE_ADD_ENTRY} from '../../actions/action-types'
-import {uuidv4} from '../../dumping-grounds'
+import {v4 as uuid} from 'uuid'
 
 export class AddNewEntry extends React.Component {
 
@@ -18,7 +18,7 @@ export class AddNewEntry extends React.Component {
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
-                    {['hanzi', 'pinyin', 'english'].map(label => <Group key={uuidv4()}
+                    {['hanzi', 'pinyin', 'english'].map(label => <Group key={uuid()}
                                                                         label={label}
                                                                         updateValue={this.updateValue}
                                                                         checkEnterAndSubmit={this.checkEnterAndSubmit}/>)}
@@ -57,7 +57,7 @@ const Group = props => (
 )
 
 const mapStateToProps = state => ({
-    values: state.addNewEntry
+    values: state.entries.data
 })
 
 const mapDispatchToProps = dispatch => ({

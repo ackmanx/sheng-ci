@@ -1,6 +1,6 @@
 import React from 'react'
 import './sidebar.css'
-import {uuidv4} from '../../dumping-grounds'
+import {v4 as uuid} from 'uuid'
 import {connect} from 'react-redux'
 import getCategories from '../../actions/get-categories'
 import {NEW_CATEGORY_PLACEHOLDER, SHOW_CATEGORY} from '../../actions/action-types'
@@ -45,7 +45,7 @@ export class Sidebar extends React.Component {
                         </li>
                     )}
                     {Object.keys(categories).map(categoryId => (
-                        <li key={uuidv4()}
+                        <li key={uuid()}
                             className={currentCategoryId === categoryId ? 'current-category' : ''}
                             onClick={() => showCategory(categoryId)}>
                             {categories[categoryId].name}

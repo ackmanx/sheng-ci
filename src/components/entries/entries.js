@@ -2,7 +2,7 @@ import React from 'react'
 import './entries.css'
 import connect from 'react-redux/es/connect/connect'
 import getAllEntries from '../../actions/get-all-entries'
-import {uuidv4} from '../../dumping-grounds'
+import {v4 as uuid} from 'uuid'
 import ConnectedAddNewEntry from '../add-new-entry/add-new-entry'
 
 export class Entries extends React.Component {
@@ -33,7 +33,7 @@ export class Entries extends React.Component {
             <div className='entries-panel'>
                 {currentCategoryId !== 'ALL' && <ConnectedAddNewEntry/>}
                 {entriesToShow.map(entry =>
-                    <div key={uuidv4()} className="entry">
+                    <div key={uuid()} className="entry">
                         <div>{entry.hanzi}</div>
                         <div>{entry.pinyin}</div>
                         <div className='english'>{entry.english}</div>

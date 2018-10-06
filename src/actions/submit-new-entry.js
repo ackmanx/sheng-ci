@@ -7,9 +7,9 @@ export default function submitNewEntry() {
 
         const body = {
             categoryId: state.app.currentCategoryId,
-            hanzi: state.addNewEntry.hanzi.trim(),
-            pinyin: state.addNewEntry.pinyin.trim(),
-            english: state.addNewEntry.english.trim(),
+            hanzi: state.entries.hanzi.trim(),
+            pinyin: state.entries.pinyin.trim(),
+            english: state.entries.english.trim(),
         }
 
         fetch(webtaskEntry,
