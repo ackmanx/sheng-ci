@@ -45,7 +45,7 @@ export class Entries extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    entries: state.entries,
+    entries: state.entries.data,
     currentCategoryId: state.app.currentCategoryId,
 })
 

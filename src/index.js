@@ -9,7 +9,6 @@ import thunk from 'redux-thunk'
 import app from './reducers/app'
 import categories from './reducers/categories'
 import entries from './reducers/entries'
-import addNewEntry from './reducers/add-new-entry'
 
 const initialState = {
     app: {
@@ -24,7 +23,6 @@ const store = createStore(
         app,
         categories,
         entries,
-        addNewEntry,
     }),
     initialState,
     composeWithDevTools(

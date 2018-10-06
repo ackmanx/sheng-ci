@@ -40,7 +40,7 @@ export class Sidebar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories,
+    categories: state.categories.data,
     currentCategoryId: state.app.currentCategoryId,
 })
 
