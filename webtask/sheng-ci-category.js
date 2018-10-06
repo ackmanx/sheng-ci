@@ -27,8 +27,10 @@ app.post('/', function (req, res) {
             return res.json({message: 'Error getting from storage before saving', error})
         }
 
-        categories[req.body.id] = {
-            id: req.body.id,
+        const newId = uuidv4()
+
+        categories[newId] = {
+            id: newId,
             name: req.body.name,
         }
 
@@ -41,5 +43,12 @@ app.post('/', function (req, res) {
         })
     })
 })
+
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8)
+        return v.toString(16)
+    })
+}
 
 module.exports = Webtask.fromExpress(app)

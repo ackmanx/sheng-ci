@@ -17,6 +17,13 @@
     background-color: #216cc7;
 }
 
+.sidebar input {
+    font-size: 20px;
+    border: none;
+    width: 90%;
+    padding: 5px;
+}
+
 .sidebar li {
     background-color: #2196f4;
     margin-bottom: 15px;

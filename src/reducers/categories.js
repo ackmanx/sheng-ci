@@ -1,10 +1,16 @@
-import {GET_CATEGORIES} from '../actions/action-types'
+import {GET_CATEGORIES, NEW_CATEGORY_PLACEHOLDER, SUBMIT_NEW_CATEGORY} from '../actions/action-types'
 
 export default function categories(state = {}, action = {}) {
 
     switch (action.type) {
         case GET_CATEGORIES:
             return {...state, data: action.categories}
+
+        case NEW_CATEGORY_PLACEHOLDER:
+            return {...state, showNewCategoryPlaceholder: true}
+
+        case SUBMIT_NEW_CATEGORY:
+            return {...state, showNewCategoryPlaceholder: false, name: ''}
 
         default:
             return state
