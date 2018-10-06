@@ -3,6 +3,7 @@ import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
 import submitNewEntry from '../actions/submit-new-entry'
 import {UPDATE_ADD_ENTRY} from '../actions/action-types'
+import {uuidv4} from '../dumping-grounds'
 
 export class AddNewEntry extends React.Component {
 
@@ -10,20 +11,20 @@ export class AddNewEntry extends React.Component {
         super(props)
         this.updateValue = this.updateValue.bind(this)
         this.checkEnterAndSubmit = this.checkEnterAndSubmit.bind(this)
+        this.validateAndSubmit = this.validateAndSubmit.bind(this)
     }
 
     render() {
-        const {submitNewEntryAction} = this.props
-
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
-                    {['hanzi', 'pinyin', 'english'].map(label => <Group label={label}
+                    {['hanzi', 'pinyin', 'english'].map(label => <Group key={uuidv4()}
+                                                                        label={label}
                                                                         updateValue={this.updateValue}
                                                                         checkEnterAndSubmit={this.checkEnterAndSubmit}/>)}
                 </div>
                 <div className='submit'>
-                    <button onClick={submitNewEntryAction}>Add</button>
+                    <button onClick={this.validateAndSubmit}>Add</button>
                 </div>
             </div>
         )
@@ -36,6 +37,12 @@ export class AddNewEntry extends React.Component {
     checkEnterAndSubmit(event, label) {
         if (event.key === 'Enter') {
             this.updateValue(event, label)
+            this.validateAndSubmit()
+        }
+    }
+
+    validateAndSubmit() {
+        if (Object.keys(this.props.values).length >= 2) {
             this.props.submitNewEntryAction()
         }
     }
@@ -49,7 +56,9 @@ const Group = props => (
     </div>
 )
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    values: state.addNewEntry
+})
 
 const mapDispatchToProps = dispatch => ({
     updateValueAction: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
