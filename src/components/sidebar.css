@@ -10,6 +10,11 @@
     background-color: #2196f4;
     margin-bottom: 15px;
     padding: 15px;
+    cursor: pointer;
+}
+
+.add-category:hover {
+    background-color: #216cc7;
 }
 
 .sidebar li {
@@ -21,5 +26,9 @@
 }
 
 .sidebar li:hover {
+    background-color: #216cc7;
+}
+
+.sidebar .current-category {
     background-color: #216cc7;
 }

@@ -16,15 +16,19 @@ export class Sidebar extends React.Component {
     }
 
     render() {
-        const {categories, showCategory} = this.props
+        const {categories, showCategory, currentCategoryId} = this.props
 
         return (
             <div className='sidebar'>
                 <div className='add-category'>+ New Category</div>
                 <ul>
-                    <li onClick={() => showCategory('ALL')}>All Categories</li>
+                    <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
+                        onClick={() => showCategory('ALL')}>
+                        All Categories
+                    </li>
                     {Object.keys(categories).map(categoryId => (
                         <li key={uuidv4()}
+                            className={currentCategoryId === categoryId ? 'current-category' : ''}
                             onClick={() => showCategory(categoryId)}>
                             {categories[categoryId].name}
                         </li>
@@ -36,7 +40,8 @@ export class Sidebar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    categories: state.categories
+    categories: state.categories,
+    currentCategoryId: state.app.currentCategoryId,
 })
 
 const mapDispatchToProps = dispatch => ({
