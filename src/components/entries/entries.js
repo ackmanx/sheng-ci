@@ -18,15 +18,12 @@ export class Entries extends React.Component {
     render() {
         const {currentCategoryId, entries} = this.props
 
-        let entriesToShow = []
+        let entriesToShow = entries[currentCategoryId] || []
 
         if (currentCategoryId === 'ALL') {
             Object.keys(entries).forEach(categoryId => {
                 entriesToShow = entriesToShow.concat(entries[categoryId])
             })
-        }
-        else {
-            entriesToShow = entries[currentCategoryId]
         }
 
         return (
