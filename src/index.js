@@ -15,7 +15,11 @@ const initialState = {
         currentCategoryId: 'ALL',
     },
     categories: {},
-    entries: {},
+    entries: {
+        hanzi: '',
+        pinyin: '',
+        english: '',
+    },
 }
 
 const store = createStore(

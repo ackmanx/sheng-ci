@@ -1,5 +1,6 @@
 import {webtaskCategory} from '../dumping-grounds'
 import {SUBMIT_NEW_CATEGORY} from './action-types'
+import getCategories from './get-categories'
 
 export default function submitNewCategory(name) {
     return dispatch => {
@@ -18,7 +19,10 @@ export default function submitNewCategory(name) {
                     return
                 }
 
-                res.json().then(json => dispatch({type: SUBMIT_NEW_CATEGORY}))
+                res.json().then(json => {
+                    dispatch({type: SUBMIT_NEW_CATEGORY})
+                    dispatch(getCategories())
+                })
             })
             .catch(e => console.error(e))
     }

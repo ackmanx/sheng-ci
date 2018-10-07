@@ -1,5 +1,6 @@
 import {webtaskEntry} from '../dumping-grounds'
 import {SUBMIT_NEW_ENTRY} from './action-types'
+import getAllEntries from './get-all-entries'
 
 export default function submitNewEntry() {
     return (dispatch, getState) => {
@@ -27,7 +28,10 @@ export default function submitNewEntry() {
                     return
                 }
 
-                res.json().then(json => dispatch({type: SUBMIT_NEW_ENTRY}))
+                res.json().then(json => {
+                    dispatch({type: SUBMIT_NEW_ENTRY})
+                    dispatch(getAllEntries())
+                })
             })
             .catch(e => console.error(e))
     }
