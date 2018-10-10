@@ -1,4 +1,4 @@
-import {GET_CATEGORIES, NEW_CATEGORY_PLACEHOLDER, SUBMIT_NEW_CATEGORY} from '../actions/action-types'
+import {CANCEL_NEW_CATEGORY, GET_CATEGORIES, NEW_CATEGORY_PLACEHOLDER, SUBMIT_NEW_CATEGORY} from '../actions/action-types'
 
 export default function categories(state = {}, action = {}) {
 
@@ -10,6 +10,9 @@ export default function categories(state = {}, action = {}) {
             return {...state, showNewCategoryPlaceholder: true}
 
         case SUBMIT_NEW_CATEGORY:
+            return {...state, showNewCategoryPlaceholder: false, name: ''}
+
+        case CANCEL_NEW_CATEGORY:
             return {...state, showNewCategoryPlaceholder: false, name: ''}
 
         default:

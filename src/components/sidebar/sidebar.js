@@ -3,7 +3,7 @@ import './sidebar.css'
 import {v4 as uuid} from 'uuid'
 import {connect} from 'react-redux'
 import getCategories from '../../actions/get-categories'
-import {NEW_CATEGORY_PLACEHOLDER, SHOW_CATEGORY} from '../../actions/action-types'
+import {CANCEL_NEW_CATEGORY, NEW_CATEGORY_PLACEHOLDER, SHOW_CATEGORY} from '../../actions/action-types'
 import submitNewCategory from '../../actions/submit-new-category'
 
 export class Sidebar extends React.Component {
@@ -41,6 +41,7 @@ export class Sidebar extends React.Component {
                         <li>
                             <input autoFocus
                                    placeholder='new category name'
+                                   onKeyDown={this.submitNewCategory}
                                    onKeyPress={this.submitNewCategory}/>
                         </li>
                     )}
@@ -60,6 +61,9 @@ export class Sidebar extends React.Component {
         if (event.key === 'Enter') {
             this.props.submitNewCategoryAction(event.target.value)
         }
+        else if (event.key === 'Escape') {
+            this.props.cancelNewCategory()
+        }
     }
 }
 
@@ -74,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
     showCategory: categoryId => dispatch({type: SHOW_CATEGORY, categoryId}),
     addNewCategoryPlaceholder: () => dispatch({type: NEW_CATEGORY_PLACEHOLDER}),
     submitNewCategoryAction: name => dispatch(submitNewCategory(name)),
+    cancelNewCategory: () => dispatch({type: CANCEL_NEW_CATEGORY}),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
