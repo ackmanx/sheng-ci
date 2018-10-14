@@ -6,6 +6,7 @@ import {Provider} from 'react-redux'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
+import MediaQuery from 'react-responsive'
 import app from './reducers/app'
 import categories from './reducers/categories'
 import entries from './reducers/entries'
@@ -36,7 +37,16 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <div>
+            <MediaQuery maxWidth={980}>
+                <div className='small-view'>
+                    <App isLargeView={false}/>
+                </div>
+            </MediaQuery>
+            <MediaQuery minWidth={981}>
+                <App isLargeView={true}/>
+            </MediaQuery>
+        </div>
     </Provider>,
     document.getElementById('root')
 )
