@@ -1,5 +1,5 @@
 import {webtaskCategoryUrl} from '../dumping-grounds'
-import {SUBMIT_NEW_CATEGORY, SUBMIT_NEW_CATEGORY_START, SUBMIT_NEW_CATEGORY_STOP} from './action-types'
+import {SUBMIT_NEW_CATEGORY_PAYLOAD, SUBMIT_NEW_CATEGORY_START, SUBMIT_NEW_CATEGORY_STOP} from './action-types'
 import getCategories from './get-categories'
 
 export default function submitNewCategory(name) {
@@ -22,7 +22,7 @@ export default function submitNewCategory(name) {
                 }
 
                 res.json().then(json => {
-                    dispatch({type: SUBMIT_NEW_CATEGORY})
+                    dispatch({type: SUBMIT_NEW_CATEGORY_PAYLOAD})
                     dispatch(getCategories())
                 })
             })

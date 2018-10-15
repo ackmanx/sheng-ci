@@ -1,5 +1,5 @@
 import {webtaskEntryUrl} from '../dumping-grounds'
-import {SUBMIT_NEW_ENTRY, SUBMIT_NEW_ENTRY_START, SUBMIT_NEW_ENTRY_STOP} from './action-types'
+import {SUBMIT_NEW_ENTRY_PAYLOAD, SUBMIT_NEW_ENTRY_START, SUBMIT_NEW_ENTRY_STOP} from './action-types'
 import getAllEntries from './get-all-entries'
 
 export default function submitNewEntry() {
@@ -30,7 +30,7 @@ export default function submitNewEntry() {
                 }
 
                 res.json().then(json => {
-                    dispatch({type: SUBMIT_NEW_ENTRY})
+                    dispatch({type: SUBMIT_NEW_ENTRY_PAYLOAD})
                     dispatch(getAllEntries())
                 })
             })
