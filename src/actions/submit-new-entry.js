@@ -1,10 +1,10 @@
 import {webtaskEntryUrl} from '../dumping-grounds'
-import {SUBMIT_NEW_ENTRY_PAYLOAD, SUBMIT_NEW_ENTRY_START, SUBMIT_NEW_ENTRY_STOP} from './action-types'
+import {submit_new_entry_payload, submit_new_entry_start, submit_new_entry_stop} from './action-types'
 import getAllEntries from './get-all-entries'
 
 export default function submitNewEntry() {
     return (dispatch, getState) => {
-        dispatch({type: SUBMIT_NEW_ENTRY_START})
+        dispatch({type: submit_new_entry_start})
 
         const state = getState()
         const body = {
@@ -30,11 +30,11 @@ export default function submitNewEntry() {
                 }
 
                 res.json().then(json => {
-                    dispatch({type: SUBMIT_NEW_ENTRY_PAYLOAD})
+                    dispatch({type: submit_new_entry_payload})
                     dispatch(getAllEntries())
                 })
             })
             .catch(e => console.error(e))
-            .finally(() => dispatch({type: SUBMIT_NEW_ENTRY_STOP}))
+            .finally(() => dispatch({type: submit_new_entry_stop}))
     }
 }

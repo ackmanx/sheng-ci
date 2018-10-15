@@ -1,18 +1,18 @@
-import {CANCEL_NEW_CATEGORY, GET_CATEGORIES_PAYLOAD, NEW_CATEGORY_PLACEHOLDER, SUBMIT_NEW_CATEGORY_PAYLOAD} from '../actions/action-types'
+import {cancel_new_category, get_categories_payload, new_category_placeholder, submit_new_category_payload} from '../actions/action-types'
 
 export default function categories(state = {}, action = {}) {
 
     switch (action.type) {
-        case GET_CATEGORIES_PAYLOAD:
+        case get_categories_payload:
             return {...state, data: action.categories}
 
-        case NEW_CATEGORY_PLACEHOLDER:
+        case new_category_placeholder:
             return {...state, showNewCategoryPlaceholder: true}
 
-        case SUBMIT_NEW_CATEGORY_PAYLOAD:
+        case submit_new_category_payload:
             return {...state, showNewCategoryPlaceholder: false, name: ''}
 
-        case CANCEL_NEW_CATEGORY:
+        case cancel_new_category:
             return {...state, showNewCategoryPlaceholder: false, name: ''}
 
         default:

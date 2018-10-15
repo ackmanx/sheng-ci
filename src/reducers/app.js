@@ -1,9 +1,9 @@
-import {SHOW_CATEGORY} from '../actions/action-types'
+import {show_category} from '../actions/action-types'
 
 export default function app(state = {}, action = {}) {
 
     switch (action.type) {
-        case SHOW_CATEGORY:
+        case show_category:
             return {...state, currentCategoryId: action.categoryId}
 
         default:

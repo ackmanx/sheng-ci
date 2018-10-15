@@ -1,9 +1,9 @@
 import {webtaskEntryUrl} from '../dumping-grounds'
-import {GET_ALL_ENTRIES_PAYLOAD, GET_ALL_ENTRIES_START, GET_ALL_ENTRIES_STOP} from './action-types'
+import {get_all_entries_payload, get_all_entries_start, get_all_entries_stop} from './action-types'
 
 export default function getAllEntries() {
     return dispatch => {
-        dispatch({type: GET_ALL_ENTRIES_START})
+        dispatch({type: get_all_entries_start})
 
         fetch(webtaskEntryUrl)
             .then(res => {
@@ -12,9 +12,9 @@ export default function getAllEntries() {
                     return
                 }
 
-                res.json().then(json => dispatch({type: GET_ALL_ENTRIES_PAYLOAD, entries: json}))
+                res.json().then(json => dispatch({type: get_all_entries_payload, entries: json}))
             })
             .catch(e => console.error(e))
-            .finally(() => dispatch({type: GET_ALL_ENTRIES_STOP}))
+            .finally(() => dispatch({type: get_all_entries_stop}))
     }
 }

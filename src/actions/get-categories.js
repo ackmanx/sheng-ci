@@ -1,9 +1,9 @@
 import {webtaskCategoryUrl} from '../dumping-grounds'
-import {GET_CATEGORIES_PAYLOAD, GET_CATEGORIES_START, GET_CATEGORIES_STOP} from './action-types'
+import {get_categories_payload, get_categories_start, get_categories_stop} from './action-types'
 
 export default function getCategories() {
     return dispatch => {
-        dispatch({type: GET_CATEGORIES_START})
+        dispatch({type: get_categories_start})
 
         fetch(webtaskCategoryUrl)
             .then(res => {
@@ -12,9 +12,9 @@ export default function getCategories() {
                     return
                 }
 
-                res.json().then(json => dispatch({type: GET_CATEGORIES_PAYLOAD, categories: json}))
+                res.json().then(json => dispatch({type: get_categories_payload, categories: json}))
             })
             .catch(e => console.error(e))
-            .finally(() => dispatch({type: GET_CATEGORIES_STOP}))
+            .finally(() => dispatch({type: get_categories_stop}))
     }
 }

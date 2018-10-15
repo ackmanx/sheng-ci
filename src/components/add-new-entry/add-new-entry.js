@@ -2,7 +2,7 @@ import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
 import submitNewEntry from '../../actions/submit-new-entry'
-import {UPDATE_ADD_ENTRY} from '../../actions/action-types'
+import {update_add_entry} from '../../actions/action-types'
 import {v4 as uuid} from 'uuid'
 
 export class AddNewEntry extends React.Component {
@@ -61,7 +61,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    updateValueAction: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
+    updateValueAction: (label, value) => dispatch({type: update_add_entry, label, value}),
     submitNewEntryAction: () => dispatch(submitNewEntry()),
 })
 

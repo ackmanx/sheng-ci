@@ -1,12 +1,12 @@
-import {GET_ALL_ENTRIES_PAYLOAD, UPDATE_ADD_ENTRY} from '../actions/action-types'
+import {get_all_entries_payload, update_add_entry} from '../actions/action-types'
 
 export default function entries(state = {}, action = {}) {
 
     switch (action.type) {
-        case GET_ALL_ENTRIES_PAYLOAD:
+        case get_all_entries_payload:
             return {...state, data: action.entries}
 
-        case UPDATE_ADD_ENTRY:
+        case update_add_entry:
             return {...state, [action.label]: action.value}
 
         default:
