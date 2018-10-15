@@ -1,4 +1,4 @@
-import {get_all_entries_payload, update_add_entry} from '../actions/action-types'
+import {get_all_entries_payload, update_add_entry_buffer} from '../actions/action-types'
 
 export default function entries(state = {}, action = {}) {
 
@@ -6,7 +6,7 @@ export default function entries(state = {}, action = {}) {
         case get_all_entries_payload:
             return {...state, data: action.entries}
 
-        case update_add_entry:
+        case update_add_entry_buffer:
             return {...state, [action.label]: action.value}
 
         default:

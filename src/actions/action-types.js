@@ -12,7 +12,7 @@ export const submit_new_category_stop = 'submit_new_category_stop'
 export const submit_new_category_payload = 'submit_new_category_payload'
 
 //entries
-export const update_add_entry = 'update_add_entry'
+export const update_add_entry_buffer = 'update_add_entry_buffer'
 
 export const get_all_entries_start = 'get_all_entries_start'
 export const get_all_entries_stop = 'get_all_entries_stop'
