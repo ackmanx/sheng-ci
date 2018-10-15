@@ -1,9 +1,11 @@
-import {webtaskEntry} from '../dumping-grounds'
-import {GET_ALL_ENTRIES} from './action-types'
+import {webtaskEntryUrl} from '../dumping-grounds'
+import {GET_ALL_ENTRIES, GET_ALL_ENTRIES_START, GET_ALL_ENTRIES_STOP} from './action-types'
 
 export default function getAllEntries() {
     return dispatch => {
-        fetch(webtaskEntry)
+        dispatch({type: GET_ALL_ENTRIES_START})
+
+        fetch(webtaskEntryUrl)
             .then(res => {
                 if (res.status !== 200) {
                     console.error('Uh oh. The webtask did not work!')
@@ -13,5 +15,6 @@ export default function getAllEntries() {
                 res.json().then(json => dispatch({type: GET_ALL_ENTRIES, entries: json}))
             })
             .catch(e => console.error(e))
+            .finally(() => dispatch({type: GET_ALL_ENTRIES_STOP}))
     }
 }

@@ -1,11 +1,12 @@
-import {webtaskEntry} from '../dumping-grounds'
-import {SUBMIT_NEW_ENTRY} from './action-types'
+import {webtaskEntryUrl} from '../dumping-grounds'
+import {SUBMIT_NEW_ENTRY, SUBMIT_NEW_ENTRY_START, SUBMIT_NEW_ENTRY_STOP} from './action-types'
 import getAllEntries from './get-all-entries'
 
 export default function submitNewEntry() {
     return (dispatch, getState) => {
-        const state = getState()
+        dispatch({type: SUBMIT_NEW_ENTRY_START})
 
+        const state = getState()
         const body = {
             categoryId: state.app.currentCategoryId,
             hanzi: state.entries.hanzi.trim(),
@@ -13,7 +14,7 @@ export default function submitNewEntry() {
             english: state.entries.english.trim(),
         }
 
-        fetch(webtaskEntry,
+        fetch(webtaskEntryUrl,
             {
                 method: 'POST',
                 headers: {
@@ -34,5 +35,6 @@ export default function submitNewEntry() {
                 })
             })
             .catch(e => console.error(e))
+            .finally(() => dispatch({type: SUBMIT_NEW_ENTRY_STOP}))
     }
 }

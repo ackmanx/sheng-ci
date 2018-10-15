@@ -20,3 +20,5 @@
 * search bar at top
 
 * Add vocab button isn't doing anything
+
+* Make util for fetch
