@@ -6,9 +6,9 @@ import {Provider} from 'react-redux'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import {app} from './reducers/app'
-import {categories} from './reducers/categories'
-import {entries} from './reducers/entries'
+import {app} from './reducers'
+import {categories} from './reducers'
+import {entries} from './reducers'
 
 const initialState = {
     app: {
