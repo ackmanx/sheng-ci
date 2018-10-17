@@ -18,10 +18,13 @@ export class AddNewEntry extends React.Component {
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
-                    {['hanzi', 'pinyin', 'english'].map(label => <Group key={uuid()}
-                                                                        label={label}
-                                                                        updateValue={this.updateValue}
-                                                                        checkEnterAndSubmit={this.checkEnterAndSubmit}/>)}
+                    {['hanzi', 'pinyin', 'english'].map(label => (
+                        <div key={uuid()} className='group'>
+                            <label>{label}</label>
+                            <input onBlur={event => this.updateValue(event, label)}
+                                   onKeyPress={event => this.checkEnterAndSubmit(event, label)}/>
+                        </div>
+                    ))}
                 </div>
                 <div className='submit'>
                     <button onClick={this.validateAndSubmit}>Add</button>
@@ -47,14 +50,6 @@ export class AddNewEntry extends React.Component {
         }
     }
 }
-
-const Group = props => (
-    <div className='group'>
-        <label>{props.label}</label>
-        <input onBlur={event => props.updateValue(event, props.label)}
-               onKeyPress={event => props.checkEnterAndSubmit(event, props.label)}/>
-    </div>
-)
 
 const mapStateToProps = state => ({
     values: state.entries.data
