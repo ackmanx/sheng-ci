@@ -1,6 +1,6 @@
 import {cancel_new_category, get_categories_payload, new_category_placeholder, submit_new_category_payload} from '../actions/action-types'
 
-export default function categories(state = {}, action = {}) {
+export function categories(state = {}, action = {}) {
 
     switch (action.type) {
         case get_categories_payload:

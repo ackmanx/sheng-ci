@@ -1,8 +1,8 @@
 import {webtaskCategoryUrl} from '../dumping-grounds'
 import {submit_new_category_payload, submit_new_category_start, submit_new_category_stop} from './action-types'
-import getCategories from './get-categories'
+import {getCategories} from './get-categories'
 
-export default function submitNewCategory(name) {
+export function submitNewCategory(name) {
     return dispatch => {
         dispatch({type: submit_new_category_start})
 

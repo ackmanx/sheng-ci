@@ -1,6 +1,6 @@
 import {get_all_entries_payload, update_add_entry_buffer} from '../actions/action-types'
 
-export default function entries(state = {}, action = {}) {
+export function entries(state = {}, action = {}) {
 
     switch (action.type) {
         case get_all_entries_payload:

@@ -1,8 +1,8 @@
 import {webtaskEntryUrl} from '../dumping-grounds'
 import {submit_new_entry_payload, submit_new_entry_start, submit_new_entry_stop} from './action-types'
-import getAllEntries from './get-all-entries'
+import {getAllEntries} from './get-all-entries'
 
-export default function submitNewEntry() {
+export function submitNewEntry() {
     return (dispatch, getState) => {
         dispatch({type: submit_new_entry_start})
 

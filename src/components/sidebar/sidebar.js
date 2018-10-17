@@ -2,9 +2,9 @@ import React from 'react'
 import './sidebar.css'
 import {v4 as uuid} from 'uuid'
 import {connect} from 'react-redux'
-import getCategories from '../../actions/get-categories'
+import {getCategories} from '../../actions/get-categories'
 import {cancel_new_category, new_category_placeholder, show_category} from '../../actions/action-types'
-import submitNewCategory from '../../actions/submit-new-category'
+import {submitNewCategory} from '../../actions/submit-new-category'
 
 export class Sidebar extends React.Component {
     static defaultProps = {
@@ -81,4 +81,4 @@ const mapDispatchToProps = dispatch => ({
     cancelNewCategory: () => dispatch({type: cancel_new_category}),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+export const ConnectedSidebar = connect(mapStateToProps, mapDispatchToProps)(Sidebar)

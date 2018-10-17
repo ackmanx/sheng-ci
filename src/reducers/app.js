@@ -1,6 +1,6 @@
 import {show_category} from '../actions/action-types'
 
-export default function app(state = {}, action = {}) {
+export function app(state = {}, action = {}) {
 
     switch (action.type) {
         case show_category:

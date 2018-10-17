@@ -1,7 +1,7 @@
 import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
-import submitNewEntry from '../../actions/submit-new-entry'
+import {submitNewEntry} from '../../actions/submit-new-entry'
 import {update_add_entry_buffer} from '../../actions/action-types'
 import {v4 as uuid} from 'uuid'
 
@@ -60,4 +60,4 @@ const mapDispatchToProps = dispatch => ({
     submitNewEntryAction: () => dispatch(submitNewEntry()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)
+export const ConnectedAddNewEntry = connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)
