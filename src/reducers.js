@@ -18,7 +18,7 @@ export function buffer(state = {}, action = {}) {
             return {...state, [action.label]: action.value}
 
         case submit_new_entry_payload:
-            return {}
+            return {hanzi: '', pinyin: '', english: ''}
 
         default:
             return state

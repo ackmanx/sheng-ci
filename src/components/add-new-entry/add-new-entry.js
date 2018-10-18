@@ -9,34 +9,30 @@ export class AddNewEntry extends React.Component {
     constructor(props) {
         super(props)
         this.updateValue = this.updateValue.bind(this)
-        this.checkEnterAndSubmit = this.checkEnterAndSubmit.bind(this)
         this.validateAndSubmit = this.validateAndSubmit.bind(this)
     }
 
     render() {
         return (
-            <div className='add-new-entry'>
+            <form className='add-new-entry'>
                 <div className='inputs'>
                     <div className='group'>
                         <label>hanzi</label>
-                        <input onBlur={event => this.updateValue(event, 'hanzi')}
-                               onKeyPress={event => this.checkEnterAndSubmit(event, 'hanzi')}/>
+                        <input type='text' value={this.props.hanzi} onChange={event => this.updateValue(event, 'hanzi')}/>
                     </div>
                     <div className='group'>
                         <label>pinyin</label>
-                        <input onBlur={event => this.updateValue(event, 'pinyin')}
-                               onKeyPress={event => this.checkEnterAndSubmit(event, 'pinyin')}/>
+                        <input type='text' value={this.props.pinyin} onChange={event => this.updateValue(event, 'pinyin')}/>
                     </div>
                     <div className='group'>
                         <label>english</label>
-                        <input onBlur={event => this.updateValue(event, 'english')}
-                               onKeyPress={event => this.checkEnterAndSubmit(event, 'english')}/>
+                        <input type='text' value={this.props.english} onChange={event => this.updateValue(event, 'english')}/>
                     </div>
                 </div>
                 <div className='submit'>
                     <button onClick={this.validateAndSubmit}>Add</button>
                 </div>
-            </div>
+            </form>
         )
     }
 
@@ -44,14 +40,10 @@ export class AddNewEntry extends React.Component {
         this.props.updateValueAction(label, event.target.value)
     }
 
-    checkEnterAndSubmit(event, label) {
-        if (event.key === 'Enter') {
-            this.updateValue(event, label)
-            this.validateAndSubmit()
-        }
-    }
+    validateAndSubmit(event) {
+        //Being my button is in a form, I'm banking on the Enter key submitting the form. As a result though, I need to prevent page reload
+        event.preventDefault()
 
-    validateAndSubmit() {
         let validInputs = 0
 
         for (let key in this.props.buffer) {
@@ -65,7 +57,10 @@ export class AddNewEntry extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    buffer: state.buffer
+    buffer: state.buffer,
+    hanzi: state.buffer.hanzi,
+    pinyin: state.buffer.pinyin,
+    english: state.buffer.english,
 })
 
 const mapDispatchToProps = dispatch => ({

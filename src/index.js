@@ -14,6 +14,11 @@ const initialState = {
     app: {
         currentCategoryId: 'ALL',
     },
+    buffer: {
+        hanzi: '',
+        pinyin: '',
+        english: '',
+    }
 }
 
 const store = createStore(
