@@ -52,7 +52,13 @@ export class AddNewEntry extends React.Component {
     }
 
     validateAndSubmit() {
-        if (Object.keys(this.props.buffer).length >= 2) {
+        let validInputs = 0
+
+        for (let key in this.props.buffer) {
+            if (this.props.buffer[key]) validInputs++
+        }
+
+        if (validInputs >= 2) {
             this.props.submitNewEntryAction()
         }
     }
