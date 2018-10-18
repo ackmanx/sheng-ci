@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import {app} from './reducers'
+import {app, buffer} from './reducers'
 import {categories} from './reducers'
 import {entries} from './reducers'
 
@@ -14,17 +14,12 @@ const initialState = {
     app: {
         currentCategoryId: 'ALL',
     },
-    categories: {},
-    entries: {
-        hanzi: '',
-        pinyin: '',
-        english: '',
-    },
 }
 
 const store = createStore(
     combineReducers({
         app,
+        buffer,
         categories,
         entries,
     }),

@@ -11,6 +11,17 @@ export function app(state = {}, action = {}) {
     }
 }
 
+export function buffer(state = {}, action = {}) {
+
+    switch (action.type) {
+        case update_add_entry_buffer:
+            return {...state, [action.label]: action.value}
+
+        default:
+            return state
+    }
+}
+
 export function categories(state = {}, action = {}) {
 
     switch (action.type) {
@@ -36,9 +47,6 @@ export function entries(state = {}, action = {}) {
     switch (action.type) {
         case get_all_entries_payload:
             return {...state, data: action.entries}
-
-        case update_add_entry_buffer:
-            return {...state, [action.label]: action.value}
 
         default:
             return state

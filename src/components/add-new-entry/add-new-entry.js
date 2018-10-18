@@ -3,7 +3,6 @@ import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
 import {submitNewEntry} from '../../actions/submit-new-entry'
 import {update_add_entry_buffer} from '../../actions/action-types'
-import {v4 as uuid} from 'uuid'
 
 export class AddNewEntry extends React.Component {
 
@@ -18,13 +17,21 @@ export class AddNewEntry extends React.Component {
         return (
             <div className='add-new-entry'>
                 <div className='inputs'>
-                    {['hanzi', 'pinyin', 'english'].map(label => (
-                        <div key={uuid()} className='group'>
-                            <label>{label}</label>
-                            <input onBlur={event => this.updateValue(event, label)}
-                                   onKeyPress={event => this.checkEnterAndSubmit(event, label)}/>
-                        </div>
-                    ))}
+                    <div className='group'>
+                        <label>hanzi</label>
+                        <input onBlur={event => this.updateValue(event, 'hanzi')}
+                               onKeyPress={event => this.checkEnterAndSubmit(event, 'hanzi')}/>
+                    </div>
+                    <div className='group'>
+                        <label>pinyin</label>
+                        <input onBlur={event => this.updateValue(event, 'pinyin')}
+                               onKeyPress={event => this.checkEnterAndSubmit(event, 'pinyin')}/>
+                    </div>
+                    <div className='group'>
+                        <label>english</label>
+                        <input onBlur={event => this.updateValue(event, 'english')}
+                               onKeyPress={event => this.checkEnterAndSubmit(event, 'english')}/>
+                    </div>
                 </div>
                 <div className='submit'>
                     <button onClick={this.validateAndSubmit}>Add</button>
@@ -45,14 +52,14 @@ export class AddNewEntry extends React.Component {
     }
 
     validateAndSubmit() {
-        if (Object.keys(this.props.values).length >= 2) {
+        if (Object.keys(this.props.buffer).length >= 2) {
             this.props.submitNewEntryAction()
         }
     }
 }
 
 const mapStateToProps = state => ({
-    values: state.entries.data
+    buffer: state.buffer
 })
 
 const mapDispatchToProps = dispatch => ({

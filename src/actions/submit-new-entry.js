@@ -1,4 +1,4 @@
-import {webtaskEntryUrl} from '../dumping-grounds'
+import {trim, webtaskEntryUrl} from '../dumping-grounds'
 import {submit_new_entry_payload, submit_new_entry_start, submit_new_entry_stop} from './action-types'
 import {getAllEntries} from './get-all-entries'
 
@@ -9,9 +9,9 @@ export function submitNewEntry() {
         const state = getState()
         const body = {
             categoryId: state.app.currentCategoryId,
-            hanzi: state.entries.hanzi.trim(),
-            pinyin: state.entries.pinyin.trim(),
-            english: state.entries.english.trim(),
+            hanzi: trim(state.buffer.hanzi),
+            pinyin: trim(state.buffer.pinyin),
+            english: trim(state.buffer.english),
         }
 
         fetch(webtaskEntryUrl,

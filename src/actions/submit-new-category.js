@@ -1,4 +1,4 @@
-import {webtaskCategoryUrl} from '../dumping-grounds'
+import {trim, webtaskCategoryUrl} from '../dumping-grounds'
 import {submit_new_category_payload, submit_new_category_start, submit_new_category_stop} from './action-types'
 import {getCategories} from './get-categories'
 
@@ -13,7 +13,7 @@ export function submitNewCategory(name) {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name}),
+                body: JSON.stringify({name: trim(name)}),
             })
             .then(res => {
                 if (res.status !== 200) {
