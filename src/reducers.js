@@ -15,10 +15,18 @@ export function buffer(state = {}, action = {}) {
 
     switch (action.type) {
         case update_add_entry_buffer:
-            return {...state, [action.label]: action.value}
+            let isValid = false
+
+            let validInputs = 0
+            if (state.hanzi) validInputs++
+            if (state.pinyin) validInputs++
+            if (state.english) validInputs++
+            if (validInputs >= 2) isValid = true
+
+            return {...state, [action.label]: action.value, isValid}
 
         case submit_new_entry_payload:
-            return {hanzi: '', pinyin: '', english: ''}
+            return {hanzi: '', pinyin: '', english: '', isValid: false}
 
         default:
             return state

@@ -13,24 +13,26 @@ export class AddNewEntry extends React.Component {
     }
 
     render() {
+        const {hanzi, pinyin, english, isValid} = this.props
+
         return (
             <form className='add-new-entry'>
                 <div className='inputs'>
                     <div className='group'>
                         <label>hanzi</label>
-                        <input type='text' value={this.props.hanzi} onChange={event => this.updateValue(event, 'hanzi')}/>
+                        <input type='text' value={hanzi} onChange={event => this.updateValue(event, 'hanzi')}/>
                     </div>
                     <div className='group'>
                         <label>pinyin</label>
-                        <input type='text' value={this.props.pinyin} onChange={event => this.updateValue(event, 'pinyin')}/>
+                        <input type='text' value={pinyin} onChange={event => this.updateValue(event, 'pinyin')}/>
                     </div>
                     <div className='group'>
                         <label>english</label>
-                        <input type='text' value={this.props.english} onChange={event => this.updateValue(event, 'english')}/>
+                        <input type='text' value={english} onChange={event => this.updateValue(event, 'english')}/>
                     </div>
                 </div>
                 <div className='submit'>
-                    <button onClick={this.validateAndSubmit}>Add</button>
+                    <button disabled={!isValid} onClick={this.validateAndSubmit}>Add</button>
                 </div>
             </form>
         )
@@ -44,13 +46,7 @@ export class AddNewEntry extends React.Component {
         //Being my button is in a form, I'm banking on the Enter key submitting the form. As a result though, I need to prevent page reload
         event.preventDefault()
 
-        let validInputs = 0
-
-        for (let key in this.props.buffer) {
-            if (this.props.buffer[key]) validInputs++
-        }
-
-        if (validInputs >= 2) {
+        if (this.props.isValid) {
             this.props.submitNewEntryAction()
         }
     }
@@ -61,6 +57,7 @@ const mapStateToProps = state => ({
     hanzi: state.buffer.hanzi,
     pinyin: state.buffer.pinyin,
     english: state.buffer.english,
+    isValid: state.buffer.isValid,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -27,6 +27,15 @@
     transition: all 0.3s;
 }
 
+.add-new-entry .submit button:disabled,
+.add-new-entry .submit button:disabled:hover,
+.add-new-entry .submit button:disabled:active {
+    background-color: #8c8c8c;
+    border: none;
+    color: #000;
+    font-weight: normal;
+}
+
 .add-new-entry .submit button:hover {
     background-color: #2196f4;
     border: 1px solid #fff;
