@@ -37,7 +37,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
+        <div className='useless-div-because-redux-provider-requires-one-child'>
             <MediaQuery maxWidth={980}>
                 <div className='small-view'>
                     <App isLargeView={false}/>
