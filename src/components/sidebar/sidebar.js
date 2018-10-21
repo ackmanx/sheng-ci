@@ -2,9 +2,9 @@ import React from 'react'
 import './sidebar.css'
 import {v4 as uuid} from 'uuid'
 import {connect} from 'react-redux'
-import getCategories from '../../actions/get-categories'
-import {CANCEL_NEW_CATEGORY, NEW_CATEGORY_PLACEHOLDER, SHOW_CATEGORY} from '../../actions/action-types'
-import submitNewCategory from '../../actions/submit-new-category'
+import {getCategories} from '../../actions/get-categories'
+import {cancel_new_category, new_category_placeholder, show_category} from '../../actions/action-types'
+import {submitNewCategory} from '../../actions/submit-new-category'
 import MediaQuery from 'react-responsive'
 
 export class Sidebar extends React.Component {
@@ -105,10 +105,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getCategories: () => dispatch(getCategories()),
-    showCategory: categoryId => dispatch({type: SHOW_CATEGORY, categoryId}),
-    addNewCategoryPlaceholder: () => dispatch({type: NEW_CATEGORY_PLACEHOLDER}),
+    showCategory: categoryId => dispatch({type: show_category, categoryId}),
+    addNewCategoryPlaceholder: () => dispatch({type: new_category_placeholder}),
     submitNewCategoryAction: name => dispatch(submitNewCategory(name)),
-    cancelNewCategory: () => dispatch({type: CANCEL_NEW_CATEGORY}),
+    cancelNewCategory: () => dispatch({type: cancel_new_category}),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+export const ConnectedSidebar = connect(mapStateToProps, mapDispatchToProps)(Sidebar)

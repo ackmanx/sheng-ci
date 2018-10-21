@@ -1,17 +1,19 @@
-import {webtaskCategory} from '../dumping-grounds'
-import {SUBMIT_NEW_CATEGORY} from './action-types'
-import getCategories from './get-categories'
+import {trim, webtaskCategoryUrl} from '../dumping-grounds'
+import {submit_new_category_payload, submit_new_category_start, submit_new_category_stop} from './action-types'
+import {getCategories} from './get-categories'
 
-export default function submitNewCategory(name) {
+export function submitNewCategory(name) {
     return dispatch => {
-        fetch(webtaskCategory,
+        dispatch({type: submit_new_category_start})
+
+        fetch(webtaskCategoryUrl,
             {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name}),
+                body: JSON.stringify({name: trim(name)}),
             })
             .then(res => {
                 if (res.status !== 200) {
@@ -20,10 +22,11 @@ export default function submitNewCategory(name) {
                 }
 
                 res.json().then(json => {
-                    dispatch({type: SUBMIT_NEW_CATEGORY})
+                    dispatch({type: submit_new_category_payload})
                     dispatch(getCategories())
                 })
             })
             .catch(e => console.error(e))
+            .finally(() => dispatch({type: submit_new_category_stop}))
     }
 }

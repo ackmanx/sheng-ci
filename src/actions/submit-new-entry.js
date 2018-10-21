@@ -1,19 +1,20 @@
-import {webtaskEntry} from '../dumping-grounds'
-import {SUBMIT_NEW_ENTRY} from './action-types'
-import getAllEntries from './get-all-entries'
+import {trim, webtaskEntryUrl} from '../dumping-grounds'
+import {submit_new_entry_payload, submit_new_entry_start, submit_new_entry_stop} from './action-types'
+import {getAllEntries} from './get-all-entries'
 
-export default function submitNewEntry() {
+export function submitNewEntry() {
     return (dispatch, getState) => {
-        const state = getState()
+        dispatch({type: submit_new_entry_start})
 
+        const state = getState()
         const body = {
             categoryId: state.app.currentCategoryId,
-            hanzi: state.entries.hanzi.trim(),
-            pinyin: state.entries.pinyin.trim(),
-            english: state.entries.english.trim(),
+            hanzi: trim(state.buffer.hanzi),
+            pinyin: trim(state.buffer.pinyin),
+            english: trim(state.buffer.english),
         }
 
-        fetch(webtaskEntry,
+        fetch(webtaskEntryUrl,
             {
                 method: 'POST',
                 headers: {
@@ -29,10 +30,11 @@ export default function submitNewEntry() {
                 }
 
                 res.json().then(json => {
-                    dispatch({type: SUBMIT_NEW_ENTRY})
+                    dispatch({type: submit_new_entry_payload})
                     dispatch(getAllEntries())
                 })
             })
             .catch(e => console.error(e))
+            .finally(() => dispatch({type: submit_new_entry_stop}))
     }
 }

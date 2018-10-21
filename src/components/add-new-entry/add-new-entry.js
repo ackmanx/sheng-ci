@@ -1,32 +1,40 @@
 import React from 'react'
 import './add-new-entry.css'
 import connect from 'react-redux/es/connect/connect'
-import submitNewEntry from '../../actions/submit-new-entry'
-import {UPDATE_ADD_ENTRY} from '../../actions/action-types'
-import {v4 as uuid} from 'uuid'
+import {submitNewEntry} from '../../actions/submit-new-entry'
+import {update_add_entry_buffer} from '../../actions/action-types'
 
 export class AddNewEntry extends React.Component {
 
     constructor(props) {
         super(props)
         this.updateValue = this.updateValue.bind(this)
-        this.checkEnterAndSubmit = this.checkEnterAndSubmit.bind(this)
         this.validateAndSubmit = this.validateAndSubmit.bind(this)
     }
 
     render() {
+        const {hanzi, pinyin, english, isValid} = this.props
+
         return (
-            <div className='add-new-entry'>
+            <form className='add-new-entry'>
                 <div className='inputs'>
-                    {['hanzi', 'pinyin', 'english'].map(label => <Group key={uuid()}
-                                                                        label={label}
-                                                                        updateValue={this.updateValue}
-                                                                        checkEnterAndSubmit={this.checkEnterAndSubmit}/>)}
+                    <div className='group'>
+                        <label>hanzi</label>
+                        <input type='text' value={hanzi} onChange={event => this.updateValue(event, 'hanzi')}/>
+                    </div>
+                    <div className='group'>
+                        <label>pinyin</label>
+                        <input type='text' value={pinyin} onChange={event => this.updateValue(event, 'pinyin')}/>
+                    </div>
+                    <div className='group'>
+                        <label>english</label>
+                        <input type='text' value={english} onChange={event => this.updateValue(event, 'english')}/>
+                    </div>
                 </div>
                 <div className='submit'>
-                    <button onClick={this.validateAndSubmit}>Add</button>
+                    <button disabled={!isValid} onClick={this.validateAndSubmit}>Add</button>
                 </div>
-            </div>
+            </form>
         )
     }
 
@@ -34,35 +42,27 @@ export class AddNewEntry extends React.Component {
         this.props.updateValueAction(label, event.target.value)
     }
 
-    checkEnterAndSubmit(event, label) {
-        if (event.key === 'Enter') {
-            this.updateValue(event, label)
-            this.validateAndSubmit()
-        }
-    }
+    validateAndSubmit(event) {
+        //Being my button is in a form, I'm banking on the Enter key submitting the form. As a result though, I need to prevent page reload
+        event.preventDefault()
 
-    validateAndSubmit() {
-        if (Object.keys(this.props.values).length >= 2) {
+        if (this.props.isValid) {
             this.props.submitNewEntryAction()
         }
     }
 }
 
-const Group = props => (
-    <div className='group'>
-        <label>{props.label}</label>
-        <input onBlur={event => props.updateValue(event, props.label)}
-               onKeyPress={event => props.checkEnterAndSubmit(event, props.label)}/>
-    </div>
-)
-
 const mapStateToProps = state => ({
-    values: state.entries.data
+    buffer: state.buffer,
+    hanzi: state.buffer.hanzi,
+    pinyin: state.buffer.pinyin,
+    english: state.buffer.english,
+    isValid: state.buffer.isValid,
 })
 
 const mapDispatchToProps = dispatch => ({
-    updateValueAction: (label, value) => dispatch({type: UPDATE_ADD_ENTRY, label, value}),
+    updateValueAction: (label, value) => dispatch({type: update_add_entry_buffer, label, value}),
     submitNewEntryAction: () => dispatch(submitNewEntry()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)
+export const ConnectedAddNewEntry = connect(mapStateToProps, mapDispatchToProps)(AddNewEntry)

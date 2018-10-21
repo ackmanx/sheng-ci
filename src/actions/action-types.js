@@ -1,10 +1,23 @@
-export const GET_CATEGORIES = 'GET_CATEGORIES'
-export const NEW_CATEGORY_PLACEHOLDER = 'NEW_CATEGORY_PLACEHOLDER'
-export const SHOW_CATEGORY = 'SHOW_CATEGORY'
-export const SUBMIT_NEW_CATEGORY = 'SUBMIT_NEW_CATEGORY'
-export const CANCEL_NEW_CATEGORY = 'CANCEL_NEW_CATEGORY'
+//categories
+export const new_category_placeholder = 'new_category_placeholder'
+export const show_category = 'show_category'
+export const cancel_new_category = 'cancel_new_category'
 
-export const GET_ALL_ENTRIES = 'GET_ALL_ENTRIES'
+export const get_categories_start = 'get_categories_start'
+export const get_categories_stop = 'get_categories_stop'
+export const get_categories_payload = 'get_categories_payload'
 
-export const UPDATE_ADD_ENTRY = 'UPDATE_ADD_ENTRY'
-export const SUBMIT_NEW_ENTRY = 'SUBMIT_NEW_ENTRY'
+export const submit_new_category_start = 'submit_new_category_start'
+export const submit_new_category_stop = 'submit_new_category_stop'
+export const submit_new_category_payload = 'submit_new_category_payload'
+
+//entries
+export const update_add_entry_buffer = 'update_add_entry_buffer'
+
+export const get_all_entries_start = 'get_all_entries_start'
+export const get_all_entries_stop = 'get_all_entries_stop'
+export const get_all_entries_payload = 'get_all_entries_payload'
+
+export const submit_new_entry_start = 'submit_new_entry_start'
+export const submit_new_entry_stop = 'submit_new_entry_stop'
+export const submit_new_entry_payload = 'submit_new_entry_payload'

@@ -1,9 +1,9 @@
 import React from 'react'
 import './entries.css'
 import connect from 'react-redux/es/connect/connect'
-import getAllEntries from '../../actions/get-all-entries'
+import {getAllEntries} from '../../actions/get-all-entries'
 import {v4 as uuid} from 'uuid'
-import ConnectedAddNewEntry from '../add-new-entry/add-new-entry'
+import {ConnectedAddNewEntry} from '../add-new-entry/add-new-entry'
 
 export class Entries extends React.Component {
     static defaultProps = {
@@ -50,4 +50,4 @@ const mapDispatchToProps = dispatch => ({
     getAllEntries: () => dispatch(getAllEntries())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Entries)
+export const ConnectedEntries = connect(mapStateToProps, mapDispatchToProps)(Entries)
