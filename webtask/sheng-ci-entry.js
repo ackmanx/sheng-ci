@@ -38,7 +38,10 @@ app.post('/', function (req, res) {
             return res.json({message: 'Error getting from storage before saving', error})
         }
 
-        //todo: when I do entry updates, I'll have to change this to search first
+        if (!entries[req.body.categoryId]) {
+            entries[req.body.categoryId] = []
+        }
+
         entries[req.body.categoryId].push({
             id: uuidv4(),
             categoryId: req.body.categoryId,
