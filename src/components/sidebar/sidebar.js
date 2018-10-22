@@ -23,7 +23,7 @@ export class Sidebar extends React.Component {
             showCategory,
             currentCategoryId,
             addNewCategoryPlaceholder,
-            showNewCategoryPlaceholder
+            showNewCategoryPlaceholder,
         } = this.props
 
         return (

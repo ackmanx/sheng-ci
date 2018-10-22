@@ -22,6 +22,7 @@
     border: none;
     width: 90%;
     padding: 5px;
+    outline: none;
 }
 
 .sidebar li {
@@ -38,4 +39,16 @@
 
 .sidebar .current-category {
     background-color: #216cc7;
+}
+
+/* -------------------------------------------------------------------- */
+/* Small View */
+/* -------------------------------------------------------------------- */
+
+.small-view .sidebar {
+    height: auto;
+}
+
+.small-view .sidebar input {
+    width: 97%;
 }

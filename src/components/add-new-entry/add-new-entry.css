@@ -71,3 +71,32 @@
 .add-new-entry input:hover {
     border: 1px solid #2196f4;
 }
+
+/* -------------------------------------------------------------------- */
+/* Small View */
+/* -------------------------------------------------------------------- */
+
+.small-view .add-new-entry {
+    display: block;
+}
+
+.small-view .add-new-entry .inputs {
+    width: 100%;
+}
+
+.small-view .add-new-entry .group {
+    display: block;
+    align-items: center;
+}
+
+.small-view .add-new-entry input {
+    width: 90%;
+}
+
+.small-view .add-new-entry .submit {
+    width: 92%;
+}
+
+.small-view .add-new-entry .submit button {
+    padding: 5px;
+}

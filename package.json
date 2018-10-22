@@ -21,6 +21,7 @@
         "react-scripts": "1.1.4",
         "redux": "4.0.0",
         "redux-thunk": "2.3.0",
+        "react-responsive": "5.0.0",
         "serve": "9.4.2",
         "uuid": "3.3.2"
     },
@@ -32,6 +33,7 @@
         "react-redux": "provides ability to use redux with react",
         "redux": "state management library",
         "redux-thunk": "provides ability to pass functions to redux for asynchronous uses",
+        "react-responsive": "allows me to use media queries to target mobile devices",
         "redux-devtools-extension": "using this removes the need for custom code looking for devtools extension in the app",
         "----backend-dependencies---": "",
         "serve": "static server being i'm not using a standard node server",
