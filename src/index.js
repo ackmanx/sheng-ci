@@ -6,10 +6,8 @@ import {Provider} from 'react-redux'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import MediaQuery from 'react-responsive'
-import {app, buffer} from './reducers'
-import {categories} from './reducers'
-import {entries} from './reducers'
+import {app, buffer, categories, entries} from './reducers'
+import {Desktop, Mobile} from './components/responsive'
 
 const initialState = {
     app: {
@@ -38,14 +36,14 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <div className='useless-div-because-redux-provider-requires-one-child'>
-            <MediaQuery maxWidth={980}>
+            <Mobile>
                 <div className='small-view'>
                     <App isLargeView={false}/>
                 </div>
-            </MediaQuery>
-            <MediaQuery minWidth={981}>
+            </Mobile>
+            <Desktop>
                 <App isLargeView={true}/>
-            </MediaQuery>
+            </Desktop>
         </div>
     </Provider>,
     document.getElementById('root')

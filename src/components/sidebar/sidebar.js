@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import {getCategories} from '../../actions/get-categories'
 import {cancel_new_category, new_category_placeholder, show_category} from '../../actions/action-types'
 import {submitNewCategory} from '../../actions/submit-new-category'
-import MediaQuery from 'react-responsive'
 
 export class Sidebar extends React.Component {
     static defaultProps = {
@@ -29,64 +28,31 @@ export class Sidebar extends React.Component {
 
         return (
             <div className='sidebar'>
-                <MediaQuery maxWidth={980}>
-                    <div>
-                        <div className='add-category'
-                             onClick={addNewCategoryPlaceholder}>
-                            + New Category
-                        </div>
-                        <ul>
-                            <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
-                                onClick={() => showCategory('ALL')}>
-                                All Categories
-                            </li>
-                            {showNewCategoryPlaceholder && (
-                                <li>
-                                    <input autoFocus
-                                           placeholder='new category name'
-                                           onKeyDown={this.submitNewCategory}
-                                           onKeyPress={this.submitNewCategory}/>
-                                </li>
-                            )}
-                            {Object.keys(categories).map(categoryId => (
-                                <li key={uuid()}
-                                    className={currentCategoryId === categoryId ? 'current-category' : ''}
-                                    onClick={() => showCategory(categoryId)}>
-                                    {categories[categoryId].name}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </MediaQuery>
-                <MediaQuery minWidth={981}>
-                    <div>
-                        <div className='add-category'
-                             onClick={addNewCategoryPlaceholder}>
-                            + New Category
-                        </div>
-                        <ul>
-                            <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
-                                onClick={() => showCategory('ALL')}>
-                                All Categories
-                            </li>
-                            {showNewCategoryPlaceholder && (
-                                <li>
-                                    <input autoFocus
-                                           placeholder='new category name'
-                                           onKeyDown={this.submitNewCategory}
-                                           onKeyPress={this.submitNewCategory}/>
-                                </li>
-                            )}
-                            {Object.keys(categories).map(categoryId => (
-                                <li key={uuid()}
-                                    className={currentCategoryId === categoryId ? 'current-category' : ''}
-                                    onClick={() => showCategory(categoryId)}>
-                                    {categories[categoryId].name}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </MediaQuery>
+                <div className='add-category'
+                     onClick={addNewCategoryPlaceholder}>
+                    + New Category
+                </div>
+                <ul>
+                    <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
+                        onClick={() => showCategory('ALL')}>
+                        All Categories
+                    </li>
+                    {showNewCategoryPlaceholder && (
+                        <li>
+                            <input autoFocus
+                                   placeholder='new category name'
+                                   onKeyDown={this.submitNewCategory}
+                                   onKeyPress={this.submitNewCategory}/>
+                        </li>
+                    )}
+                    {Object.keys(categories).map(categoryId => (
+                        <li key={uuid()}
+                            className={currentCategoryId === categoryId ? 'current-category' : ''}
+                            onClick={() => showCategory(categoryId)}>
+                            {categories[categoryId].name}
+                        </li>
+                    ))}
+                </ul>
             </div>
         )
     }
