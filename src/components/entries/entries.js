@@ -2,16 +2,23 @@ import React from 'react'
 import './entries.css'
 import connect from 'react-redux/es/connect/connect'
 import {getAllEntries} from '../../actions/get-all-entries'
-import {v4 as uuid} from 'uuid'
 import {ConnectedAddNewEntry} from '../add-new-entry/add-new-entry'
+import {v4 as uuid} from 'uuid'
+import editIcon from '../../images/edit.png'
+import deleteIcon from '../../images/delete.png'
 
 export class Entries extends React.Component {
     static defaultProps = {
         entries: {}
     }
 
+    state = {
+        showMenu: false,
+    }
+
     constructor(props) {
         super(props)
+        this.toggleMenu = this.toggleMenu.bind(this)
         props.getAllEntries()
     }
 
@@ -29,15 +36,34 @@ export class Entries extends React.Component {
         return (
             <div className='entries-panel'>
                 {currentCategoryId !== 'ALL' && <ConnectedAddNewEntry/>}
-                {entriesToShow.map(entry =>
-                    <div key={uuid()} className='entry'>
-                        <div>{entry.hanzi}</div>
-                        <div>{entry.pinyin}</div>
-                        <div className='english'>{entry.english}</div>
-                    </div>
-                )}
+                {entriesToShow.map(entry => {
+                    const showMenuForEntry = this.state.showMenu && this.state.menuId === entry.id
+                    return (
+                        <div key={uuid()} className='entry'>
+                            <div className={`menu ${showMenuForEntry ? 'menu--open' : ''}`}>
+                                {!showMenuForEntry && <button onClick={() => this.toggleMenu(entry.id)}>...</button>}
+                                {showMenuForEntry && (
+                                    <div>
+                                        <img src={editIcon} alt='edit' onClick={this.toggleMenu}/>
+                                        <img src={deleteIcon} alt='delete' onClick={this.toggleMenu}/>
+                                    </div>
+                                )}
+                            </div>
+                            <div>{entry.hanzi}</div>
+                            <div>{entry.pinyin}</div>
+                            <div className='english'>{entry.english}</div>
+                        </div>
+                    )
+                })}
             </div>
         )
+    }
+
+    toggleMenu(id) {
+        this.setState({
+            showMenu: !this.state.showMenu,
+            menuId: typeof id === 'string' ? id : null,
+        })
     }
 }
 
