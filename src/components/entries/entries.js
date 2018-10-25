@@ -6,6 +6,7 @@ import {ConnectedAddNewEntry} from '../add-new-entry/add-new-entry'
 import {v4 as uuid} from 'uuid'
 import editIcon from '../../images/edit.png'
 import deleteIcon from '../../images/delete.png'
+import {deleteEntry} from '../../actions/delete-entry'
 
 export class Entries extends React.Component {
     static defaultProps = {
@@ -23,7 +24,7 @@ export class Entries extends React.Component {
     }
 
     render() {
-        const {currentCategoryId, entries} = this.props
+        const {currentCategoryId, entries, deleteEntryAction} = this.props
 
         let entriesToShow = entries[currentCategoryId] || []
 
@@ -45,7 +46,7 @@ export class Entries extends React.Component {
                                 {showMenuForEntry && (
                                     <div>
                                         <img src={editIcon} alt='edit' onClick={this.toggleMenu}/>
-                                        <img src={deleteIcon} alt='delete' onClick={this.toggleMenu}/>
+                                        <img src={deleteIcon} alt='delete' onClick={() => deleteEntryAction(entry.id, entry.categoryId)}/>
                                     </div>
                                 )}
                             </div>
@@ -73,7 +74,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getAllEntries: () => dispatch(getAllEntries())
+    getAllEntries: () => dispatch(getAllEntries()),
+    deleteEntryAction: (entryId, categoryId) => dispatch(deleteEntry(entryId, categoryId)),
 })
 
 export const ConnectedEntries = connect(mapStateToProps, mapDispatchToProps)(Entries)

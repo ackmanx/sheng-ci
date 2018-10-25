@@ -21,3 +21,7 @@ export const get_all_entries_payload = 'get_all_entries_payload'
 export const submit_new_entry_start = 'submit_new_entry_start'
 export const submit_new_entry_stop = 'submit_new_entry_stop'
 export const submit_new_entry_payload = 'submit_new_entry_payload'
+
+export const delete_entry_start = 'delete_entry_start'
+export const delete_entry_stop = 'delete_entry_stop'
+export const delete_entry_payload = 'delete_entry_payload'

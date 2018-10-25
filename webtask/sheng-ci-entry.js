@@ -55,7 +55,29 @@ app.post('/', function (req, res) {
                 return res.json({message: 'Error saving to storage', error})
             }
 
-            res.json({message: 'Saved!', saved: entries[req.body.id]})
+            res.json({message: 'Saved!', saved: entries[req.body.categoryId]})
+        })
+    })
+})
+
+app.delete('/', function (req, res) {
+    req.webtaskContext.storage.get(function (error, entries = {}) {
+        if (error) {
+            return res.json({message: 'Error getting from storage before deleting', error})
+        }
+
+        const categoryToDeleteFrom = req.body.categoryId
+        const entryIdToDelete = req.body.entryId
+
+        const entryToDeleteIndex = entries[categoryToDeleteFrom].findIndex(entry => entry.id === entryIdToDelete)
+        const deleted = entries[categoryToDeleteFrom].splice(entryToDeleteIndex, 1)
+
+        req.webtaskContext.storage.set(entries, function (error) {
+            if (error) {
+                return res.json({message: 'Error saving to storage after delete', error})
+            }
+
+            res.json({message: 'Deleted!', deleted})
         })
     })
 })
