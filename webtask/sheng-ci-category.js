@@ -45,4 +45,22 @@ app.post('/', function (req, res) {
     })
 })
 
+app.delete('/', function (req, res) {
+    req.webtaskContext.storage.get(function (error, categories = {}) {
+        if (error) {
+            return res.json({message: 'Error getting from storage before deleting', error})
+        }
+
+        categories[req.body.categoryId] = undefined
+
+        req.webtaskContext.storage.set(categories, function (error) {
+            if (error) {
+                return res.json({message: 'Error saving to storage after delete', error})
+            }
+
+            res.json({message: 'Deleted!', saved: categories[req.body.id]})
+        })
+    })
+})
+
 module.exports = Webtask.fromExpress(app)
