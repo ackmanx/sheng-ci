@@ -2,13 +2,9 @@
 
 * rename category
 
-* delete entry
-
 * edit entry
 
 * re-assign entry
-
-* mobile
 
 * loading spinners
     * Add vocab

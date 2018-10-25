@@ -41,7 +41,6 @@ export class Sidebar extends React.Component {
                         <li>
                             <input autoFocus
                                    placeholder='new category name'
-                                   onKeyDown={this.submitNewCategory}
                                    onKeyPress={this.submitNewCategory}/>
                         </li>
                     )}
