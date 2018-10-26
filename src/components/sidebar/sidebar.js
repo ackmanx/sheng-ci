@@ -28,9 +28,9 @@ export class Sidebar extends React.Component {
 
         return (
             <div className='sidebar'>
-                <div className='add-category'
-                     onClick={addNewCategoryPlaceholder}>
-                    + New Category
+                <div>
+                    <div className='category-action' onClick={addNewCategoryPlaceholder}>+</div>
+                    <div className='category-action'>✎</div>
                 </div>
                 <ul>
                     <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
@@ -41,7 +41,7 @@ export class Sidebar extends React.Component {
                         <li>
                             <input autoFocus
                                    placeholder='new category name'
-                                   onKeyPress={this.submitNewCategory}/>
+                                   onKeyDown={this.submitNewCategory}/>
                         </li>
                     )}
                     {Object.keys(categories).map(categoryId => (
