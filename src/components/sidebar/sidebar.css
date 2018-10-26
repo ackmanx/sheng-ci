@@ -6,13 +6,17 @@
     font-weight: bold;
 }
 
+.sidebar .flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .category-action {
-    background-color: #2196f4;
+    width: 45%;
     margin-bottom: 15px;
     padding: 15px;
+    background-color: #2196f4;
     cursor: pointer;
-    width: 90px;
-    display: inline-block;
     text-align: center;
 }
 

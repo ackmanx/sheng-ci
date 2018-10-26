@@ -28,7 +28,7 @@ export class Sidebar extends React.Component {
 
         return (
             <div className='sidebar'>
-                <div>
+                <div className='flex-container'>
                     <div className='category-action' onClick={addNewCategoryPlaceholder}>+</div>
                     <div className='category-action'>✎</div>
                 </div>
