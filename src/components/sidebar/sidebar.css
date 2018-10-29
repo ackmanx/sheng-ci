@@ -12,16 +12,12 @@
 }
 
 .category-action {
-    width: 45%;
+    width: 100%;
     margin-bottom: 15px;
     background-color: #2196f4;
     cursor: pointer;
     text-align: center;
     font-size: 35px;
-}
-
-.category-action:first-child {
-    margin-right: 10px;
 }
 
 .category-action:hover {

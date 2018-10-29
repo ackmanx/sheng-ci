@@ -30,7 +30,6 @@ export class Sidebar extends React.Component {
             <div className='sidebar'>
                 <div className='flex-container'>
                     <div className='category-action' onClick={addNewCategoryPlaceholder}>+</div>
-                    <div className='category-action'>✎</div>
                 </div>
                 <ul>
                     <li className={currentCategoryId === 'ALL' ? 'current-category' : ''}
