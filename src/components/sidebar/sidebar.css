@@ -13,6 +13,7 @@
 
 .category-action {
     width: 100%;
+    padding: 5px;
     margin-bottom: 15px;
     background-color: #2196f4;
     cursor: pointer;
